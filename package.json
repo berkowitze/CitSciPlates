@@ -1,0 +1,59 @@
+{
+  "name": "citizen-science",
+  "version": "1.0.0",
+  "description": "Citizen Science Plate Image Uploader",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds",
+    "package-win": "electron-packager . citizen-science --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Electron Tutorial App\"",
+    "package-linux": "electron-packager . shopping-list --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/icon.png --prune=true --out=release-builds",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "dist-win": "electron-builder --win dir"
+  },
+  "build": {
+    "appId": "yourappid",
+    "dmg": {
+      "contents": [
+        {
+          "x": 110,
+          "y": 150
+        },
+        {
+          "x": 240,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "win": {
+      "target": "squirrel",
+      "icon": "build/icon.ico"
+    }
+  },
+  "author": "Eli",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.7.1",
+    "jquery": "^3.4.1",
+    "path": "^0.12.7",
+    "url": "^0.11.0",
+    "usb": "^1.6.0",
+    "usb-detection": "^4.5.0"
+  },
+  "devDependencies": {
+    "electron": "^6.0.0",
+    "electron-builder": "^21.2.0",
+    "electron-packager": "^14.0.6",
+    "electron-reload": "^1.5.0",
+    "electron-winstaller": "^4.0.0"
+  }
+}
